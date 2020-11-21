@@ -1,0 +1,19 @@
+.card-width
+{
+  width: 18rem;
+}
+
+.table-bg, .thead-bg
+{
+  background-color: #0B407E;
+}
+
+/* .side_bar {
+  max-width: 15rem;
+  width:100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  text-decoration: none;
+} */
