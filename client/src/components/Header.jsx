@@ -10,38 +10,40 @@ const Header = () => {
 				</h3>
 			</div>
 
-			{/* <div className='sidebar'>
-				<ul className='sidebar'>
+			<div className='menu font-weight-bold'>
+				<ul type='none'>
 					<li>
-						<a href='#'>Students</a>
+						<a href='/studentsdetails'>Students</a>
 					</li>
 					<li>
-						<a href='#'>Classes</a>
+						<a href='/classdetails'>Classes</a>
 					</li>
 					<li>
-						<a href='#'>Examinations</a>
+						<a href='/examsdetails'>Exams</a>
 					</li>
 				</ul>
-  </div> */}
-			<div></div>
-			<div className='card card-width text-center shadow'>
-				<div className='card-body'>
-					<h5 className='card-title'>Students</h5>
-					<a href='/studentsdetails'>Students</a>
-				</div>
 			</div>
-			<div className='card mt-4  card-width text-center shadow '>
-				<div className='card-body'>
-					<h5 className='card-title'>Classes</h5>
-					<a href='classdetails'>Classes</a>
+
+			<section className='rowcards'>
+				<div className='mt-4 card card-width text-center shadow-lg '>
+					<div className='card-body'>
+						<h5 className='card-title'>Students</h5>
+						<a href='/studentsdetails'>Students</a>
+					</div>
 				</div>
-			</div>
-			<div className='card mt-4  card-width text-center shadow'>
-				<div className='card-body'>
-					<h5 className='card-title'>Examinations</h5>
-					<a href='examsdetails'>Examinations</a>
+				<div className='card mt-4  card-width text-center shadow-lg '>
+					<div className='card-body'>
+						<h5 className='card-title '>Classes</h5>
+						<a href='/classdetails'>Classes</a>
+					</div>
 				</div>
-			</div>
+				<div className='card mt-4  card-width text-center shadow-lg'>
+					<div className='card-body'>
+						<h5 className='card-title'>Examinations</h5>
+						<a href='/examsdetails'>Examinations</a>
+					</div>
+				</div>
+			</section>
 		</div>
 	);
 };

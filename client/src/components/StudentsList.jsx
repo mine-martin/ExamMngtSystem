@@ -7,6 +7,21 @@ const StudentsList = () => {
 			<div>
 				<h5 className='text-center'>Students Details</h5>
 			</div>
+
+			<div className='menu font-weight-bold'>
+				<ul type='none'>
+					<li>
+						<a href='/studentsdetails'>Students</a>
+					</li>
+					<li>
+						<a href='/classdetails'>Classes</a>
+					</li>
+					<li>
+						<a href='/examsdetails'>Exams</a>
+					</li>
+				</ul>
+			</div>
+
 			<table className='rounded-lg table-hover table table-dark font-weight-light text-center'>
 				<thead className='table-bg'>
 					<tr>
@@ -23,7 +38,7 @@ const StudentsList = () => {
 				<tbody>
 					<tr>
 						<td>234</td>
-						<td>Mine Mine</td>
+						<td>Mine Mine mine mine mine</td>
 						<td>Kamau</td>
 						<td>23/04/2006</td>
 						<td>Class 6</td>
