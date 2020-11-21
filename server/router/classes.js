@@ -5,12 +5,14 @@ const db = require('../db/index');
 router.use(express.json());
 
 //Get all classes from Database
-router.get('/v1/classes', (req, res) => {
+router.get('/v1/classes', async (req, res) => {
 	try {
+		const results = await db.query('SELECT * FROM classes');
+
 		res.status(200).json({
 			status: 'success',
 			data: {
-				classes: 'class one',
+				classes: results.rows,
 			},
 		});
 	} catch (err) {
@@ -19,12 +21,16 @@ router.get('/v1/classes', (req, res) => {
 });
 
 //Get one Class from Database
-router.get('/v1/classes/:id', (req, res) => {
+router.get('/v1/classes/:id', async (req, res) => {
 	try {
+		const results = await db.query('SELECT * FROM classes WHERE id = $1', [
+			req.params.id,
+		]);
+
 		res.status(200).json({
 			status: 'success',
 			data: {
-				classes: 'classes two',
+				classes: results.rows[0],
 			},
 		});
 		console.log(req.params.id);
@@ -34,27 +40,40 @@ router.get('/v1/classes/:id', (req, res) => {
 });
 
 //Add one Class to Database
-router.post('/v1/classes', (req, res) => {
+router.post('/v1/classes', async (req, res) => {
 	try {
+		const results = await db.query(
+			'INSERT INTO classes (class_name, class_teacher, exam_name) VALUES($1,$2,$3)  returning *',
+			[req.body.class_name, req.body.class_teacher, req.body.exam_name],
+		);
+
 		res.status(200).json({
 			status: 'success',
 			data: {
-				classes: 'classes three',
+				classes: results.rows[0],
 			},
 		});
-		// console.log(req.rows);
 	} catch (err) {
 		console.log(err);
 	}
 });
 
 //Update one Class in Database
-router.put('/v1/classes/:id', (req, res) => {
+router.put('/v1/classes/:id', async (req, res) => {
 	try {
+		const results = await db.query(
+			'UPDATE classses SET class_name = $1, class_teacher =$2, exam_name =$3 WHERE id = $4 returning * '[
+				(req.body.class_name,
+				req.body.class_teacher,
+				req.body.exam_name,
+				req.params.id)
+			],
+		);
+
 		res.status(200).json({
 			status: 'success',
 			data: {
-				classes: 'classes four',
+				classes: results.rows[0],
 			},
 		});
 		// console.log();
@@ -64,8 +83,12 @@ router.put('/v1/classes/:id', (req, res) => {
 });
 
 //Delete Class from Database
-router.delete('/v1/classes/:id', (req, res) => {
+router.delete('/v1/classes/:id', async (req, res) => {
 	try {
+		const result = await db.query('DELETE FROM classes WHERE id = $1', [
+			req.params.id,
+		]);
+
 		res.status(204).json({
 			status: 'success',
 		});
