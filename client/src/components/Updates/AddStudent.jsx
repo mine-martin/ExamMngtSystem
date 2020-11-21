@@ -4,7 +4,7 @@ const AddStudent = () => {
 	return (
 		<div>
 			<form action=''>
-				<div className='form-row'>
+				<div className='form-row ml-4'>
 					<div className='col'>
 						<input
 							type='text'

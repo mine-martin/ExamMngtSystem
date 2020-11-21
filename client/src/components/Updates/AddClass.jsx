@@ -3,8 +3,11 @@ import React from 'react';
 const AddClass = () => {
 	return (
 		<div>
+			<div>
+				<h4 className='text-center font-weight-light mt-5'>Add a new Class</h4>
+			</div>
 			<form action=''>
-				<div className='form-row'>
+				<div className='form-row ml-4'>
 					<div className='col'>
 						<input
 							type='text'

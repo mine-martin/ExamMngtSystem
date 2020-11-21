@@ -3,11 +3,29 @@ import './style.css';
 
 const ExamsList = () => {
 	return (
-		<div className='list-group'>
+		<div className='list-group ml-4'>
 			<div className='text-center '>
 				<h5>Examinations List</h5>
 			</div>
-			<table className=' rounded-lg table table-hover table-dark '>
+
+			<div className='menu font-weight-bold'>
+				<ul type='none'>
+					<li>
+						<a href='/'>Dashboard</a>
+					</li>
+					<li>
+						<a href='/studentsdetails'>Students</a>
+					</li>
+					<li>
+						<a href='/classdetails'>Classes</a>
+					</li>
+					<li>
+						<a href='/examsdetails'>Exams</a>
+					</li>
+				</ul>
+			</div>
+
+			<table className=' rounded-lg table table-hover table-dark font-weight-light text-center'>
 				<thead className='table-bg'>
 					<tr className='bg-primary'>
 						<th scope='col'>Exam Name</th>

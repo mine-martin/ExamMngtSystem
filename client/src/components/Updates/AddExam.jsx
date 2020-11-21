@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddExam = () => {
 	return (
-		<div>
+		<div className='ml-4'>
 			<form action=''>
 				<div className='form-row'>
 					<div className='col'>

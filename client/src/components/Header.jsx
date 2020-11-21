@@ -3,7 +3,7 @@ import './style.css';
 
 const Header = () => {
 	return (
-		<div className='container'>
+		<div className='container ml-4'>
 			<div>
 				<h3 className=' font-weight-light text-center mt-5'>
 					School Examination Management System
@@ -12,6 +12,9 @@ const Header = () => {
 
 			<div className='menu font-weight-bold'>
 				<ul type='none'>
+					<li>
+						<a href='/'>Dashboard</a>
+					</li>
 					<li>
 						<a href='/studentsdetails'>Students</a>
 					</li>

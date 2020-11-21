@@ -8,8 +8,11 @@ const StudentsList = () => {
 				<h5 className='text-center'>Students Details</h5>
 			</div>
 
-			<div className='menu font-weight-bold'>
+			<div className='menu font-weight-bold '>
 				<ul type='none'>
+					<li>
+						<a href='/'>Dashboard</a>
+					</li>
 					<li>
 						<a href='/studentsdetails'>Students</a>
 					</li>
@@ -22,7 +25,7 @@ const StudentsList = () => {
 				</ul>
 			</div>
 
-			<table className='rounded-lg table-hover table table-dark font-weight-light text-center'>
+			<table className='rounded-lg table-hover table table-dark font-weight-light text-center ml-4'>
 				<thead className='table-bg'>
 					<tr>
 						<th scope='col'>Student ADM</th>
@@ -38,7 +41,7 @@ const StudentsList = () => {
 				<tbody>
 					<tr>
 						<td>234</td>
-						<td>Mine Mine mine mine mine</td>
+						<td>Mine Mine </td>
 						<td>Kamau</td>
 						<td>23/04/2006</td>
 						<td>Class 6</td>
