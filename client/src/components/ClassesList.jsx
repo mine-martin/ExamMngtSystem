@@ -26,8 +26,8 @@ const ClassesList = () => {
 			</div>
 
 			<table className=' rounded-lg table table-hover table-dark font-weight-light text-center'>
-				<thead className='thead-bg'>
-					<tr className='bg-primary'>
+				<thead>
+					<tr className='table-bg'>
 						<th scope='col'>Class Name</th>
 						<th scope='col'>Class Teacher</th>
 						<th scope='col'>Exam Name</th>

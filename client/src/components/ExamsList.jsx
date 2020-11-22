@@ -26,8 +26,8 @@ const ExamsList = () => {
 			</div>
 
 			<table className=' rounded-lg table table-hover table-dark font-weight-light text-center'>
-				<thead className='table-bg'>
-					<tr className='bg-primary'>
+				<thead>
+					<tr className='table-bg'>
 						<th scope='col'>Exam Name</th>
 						<th scope='col'>Exam Date</th>
 						<th scope='col'>Exam Type</th>
