@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './style.css';
 import DataFinder from '../apis/DataFinder';
+import { ExamsContext } from '../context/ExamContext';
 
 const ExamsList = () => {
+	// const { exams, setExams } = useContext(ExamsContext);
 	useEffect(() => {
 		const fetchExams = async () => {
 			try {
 				const response = await DataFinder.get('/exams');
 				console.log(response.data);
+				// setExams(response.data.data.exams);
 			} catch (error) {
 				console.log(error);
 			}

@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './style.css';
 import DataFinder from '../apis/DataFinder';
+import { ClassesContext } from '../context/ClassesContext';
 
 const ClassesList = () => {
+	const { classes, setClasses } = useContext(ClassesContext);
 	useEffect(() => {
 		const fetchClasses = async () => {
 			try {
 				const response = await DataFinder.get('/classes');
-				console.log(response.data);
+				// console.log(response.data);
+				setClasses(response.data.data.classes);
 			} catch (error) {
 				console.log(error);
 			}
