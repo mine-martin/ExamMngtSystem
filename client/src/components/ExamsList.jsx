@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
+import DataFinder from '../apis/DataFinder';
 
 const ExamsList = () => {
+	useEffect(() => {
+		const fetchExams = async () => {
+			try {
+				const response = await DataFinder.get('/exams');
+				console.log(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchExams();
+	}, []);
+
 	return (
 		<div className='list-group ml-4'>
 			<div className='text-center '>

@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
+import DataFinder from '../apis/DataFinder';
 
 const StudentsList = () => {
+	useEffect(() => {
+		const fetchStudents = async () => {
+			try {
+				const response = await DataFinder.get('/students');
+				console.log(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchStudents();
+	}, []);
+
 	return (
 		<div>
 			<div>
