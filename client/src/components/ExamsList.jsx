@@ -3,14 +3,14 @@ import './style.css';
 import DataFinder from '../apis/DataFinder';
 import { ExamsContext } from '../context/ExamContext';
 
-const ExamsList = () => {
-	// const { exams, setExams } = useContext(ExamsContext);
+const ExamsList = (props) => {
+	const { exams, setExams } = useContext(ExamsContext);
 	useEffect(() => {
 		const fetchExams = async () => {
 			try {
 				const response = await DataFinder.get('/exams');
-				console.log(response.data);
-				// setExams(response.data.data.exams);
+				// console.log(response.data);
+				setExams(response.data.data.exams);
 			} catch (error) {
 				console.log(error);
 			}
@@ -52,7 +52,23 @@ const ExamsList = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					{exams &&
+						exams.map((exam) => {
+							return (
+								<tr>
+									<td>{exam.exam_name}</td>
+									<td>{exam.exam_date}</td>
+									<td>{exam.exam_type}</td>
+									<td>
+										<button className='btn btn-warning'>Update</button>
+									</td>
+									<td>
+										<button className='btn btn-danger'>Delete</button>
+									</td>
+								</tr>
+							);
+						})}
+					{/* <tr>
 						<td>End Term 1 2020</td>
 						<td>30/3/2020</td>
 						<td>Main Exam</td>
@@ -73,7 +89,7 @@ const ExamsList = () => {
 						<td>
 							<button className='btn btn-danger'>Delete</button>
 						</td>
-					</tr>
+					</tr> */}
 				</tbody>
 			</table>
 		</div>

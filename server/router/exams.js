@@ -32,7 +32,7 @@ router.get('/v1/exams/:id', async (req, res) => {
 				exams: results.rows[0],
 			},
 		});
-		console.log(req.params.id);
+		// console.log(req.params.id);
 	} catch (err) {
 		console.log(err);
 	}
@@ -62,8 +62,12 @@ router.post('/v1/exams', async (req, res) => {
 router.put('/v1/exams/:id', async (req, res) => {
 	try {
 		const results = await db.query(
-			'UPDATE exams SET exam_name = $1, exam_date =$2, exam_type =$3 WHERE id = $4 returning * '[
-				(req.body.exam_name, req.body.exam_date, req.body.exam_type)
+			'UPDATE exams SET exam_name = $1, exam_date =$2, exam_type =$3 WHERE id = $4 returning *',
+			[
+				req.body.exam_name,
+				req.body.exam_date,
+				req.body.exam_type,
+				req.params.id,
 			],
 		);
 

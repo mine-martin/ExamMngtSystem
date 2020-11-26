@@ -3,7 +3,7 @@ import './style.css';
 import DataFinder from '../apis/DataFinder';
 import { ClassesContext } from '../context/ClassesContext';
 
-const ClassesList = () => {
+const ClassesList = (props) => {
 	const { classes, setClasses } = useContext(ClassesContext);
 	useEffect(() => {
 		const fetchClasses = async () => {
@@ -52,7 +52,23 @@ const ClassesList = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					{classes.map((classes) => {
+						return (
+							<tr>
+								<td>{classes.class_name}</td>
+								<td>{classes.class_teacher}</td>
+								<td>{classes.exam_name}</td>
+								<td>
+									<button className='btn btn-warning'>Update</button>
+								</td>
+								<td>
+									{' '}
+									<button className='btn btn-danger'>Delete</button>
+								</td>
+							</tr>
+						);
+					})}
+					{/* <tr>
 						<td>Class 1</td>
 						<td>Mr John</td>
 						<td>End Term 1 2020</td>
@@ -62,7 +78,7 @@ const ClassesList = () => {
 						<td>
 							<button className='btn btn-danger'>Delete</button>
 						</td>
-					</tr>
+					</tr> */}
 				</tbody>
 			</table>
 		</div>

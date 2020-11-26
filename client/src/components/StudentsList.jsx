@@ -55,7 +55,29 @@ const StudentsList = (props) => {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					{students &&
+						students.map((student) => {
+							return (
+								<tr key={student.id}>
+									<td>{student.student_adm}</td>
+									<td>{student.student_name}</td>
+
+									<td>{student.surname}</td>
+
+									<td>{student.student_dob}</td>
+									<td>{student.class_name}</td>
+									<td>{student.exam_name}</td>
+									<td>
+										<button className='btn btn-warning'>Update</button>
+									</td>
+									<td>
+										<button className='btn btn-danger'>Delete</button>
+									</td>
+								</tr>
+							);
+						})}
+
+					{/* <tr>
 						<td>234</td>
 						<td>Mine Mine </td>
 						<td>Kamau</td>
@@ -96,7 +118,7 @@ const StudentsList = (props) => {
 						<td>
 							<button className='btn btn-danger'>Delete</button>
 						</td>
-					</tr>
+					</tr> */}
 				</tbody>
 			</table>
 		</div>

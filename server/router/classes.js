@@ -62,11 +62,12 @@ router.post('/v1/classes', async (req, res) => {
 router.put('/v1/classes/:id', async (req, res) => {
 	try {
 		const results = await db.query(
-			'UPDATE classses SET class_name = $1, class_teacher =$2, exam_name =$3 WHERE id = $4 returning * '[
-				(req.body.class_name,
+			'UPDATE classes SET class_name = $1, class_teacher =$2, exam_name =$3 WHERE id = $4 returning * ',
+			[
+				req.body.class_name,
 				req.body.class_teacher,
 				req.body.exam_name,
-				req.params.id)
+				req.params.id,
 			],
 		);
 
