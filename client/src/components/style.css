@@ -41,6 +41,13 @@ li a:hover
 
 }
 
+.hover:hover
+{
+  color: #0B407E;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
 
 section{
   /* background-color: #494f54; */

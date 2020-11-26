@@ -31,19 +31,25 @@ const Header = () => {
 				<div className='mt-4 card card-width text-center shadow-lg '>
 					<div className='card-body'>
 						<h5 className='card-title'>Students</h5>
-						<a href='/studentsdetails'>Students</a>
+						<a className='hover' href='/studentsdetails'>
+							Students
+						</a>
 					</div>
 				</div>
 				<div className='card mt-4  card-width text-center shadow-lg '>
 					<div className='card-body'>
-						<h5 className='card-title '>Classes</h5>
-						<a href='/classdetails'>Classes</a>
+						<h5 className='card-title'>Classes</h5>
+						<a className='hover' href='/classdetails'>
+							Classes
+						</a>
 					</div>
 				</div>
 				<div className='card mt-4  card-width text-center shadow-lg'>
 					<div className='card-body'>
 						<h5 className='card-title'>Examinations</h5>
-						<a href='/examsdetails'>Examinations</a>
+						<a className='hover' href='/examsdetails'>
+							Examinations
+						</a>
 					</div>
 				</div>
 			</section>
