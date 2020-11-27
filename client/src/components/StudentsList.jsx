@@ -18,6 +18,20 @@ const StudentsList = (props) => {
 		fetchStudents();
 	}, []);
 
+	const handleDelete = async (id) => {
+		try {
+			const response = await DataFinder.delete(`/students/${id}`);
+			setStudents(
+				students.filter((students) => {
+					return students.id !== id;
+				}),
+			);
+			// console.log(response);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<div>
 			<div>
@@ -71,7 +85,11 @@ const StudentsList = (props) => {
 										<button className='btn btn-warning'>Update</button>
 									</td>
 									<td>
-										<button className='btn btn-danger'>Delete</button>
+										<button
+											onClick={() => handleDelete(student.id)}
+											className='btn btn-danger'>
+											Delete
+										</button>
 									</td>
 								</tr>
 							);

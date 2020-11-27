@@ -18,6 +18,20 @@ const ExamsList = (props) => {
 		fetchExams();
 	}, []);
 
+	const handleDelete = async (id) => {
+		try {
+			const response = await DataFinder.delete(`/exams/${id}`);
+			setExams(
+				exams.filter((exams) => {
+					return exams.id !== id;
+				}),
+			);
+			// console.log(response);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<div className='list-group ml-4'>
 			<div className='text-center '>
@@ -55,7 +69,7 @@ const ExamsList = (props) => {
 					{exams &&
 						exams.map((exam) => {
 							return (
-								<tr>
+								<tr key={exam.id}>
 									<td>{exam.exam_name}</td>
 									<td>{exam.exam_date}</td>
 									<td>{exam.exam_type}</td>
@@ -63,7 +77,11 @@ const ExamsList = (props) => {
 										<button className='btn btn-warning'>Update</button>
 									</td>
 									<td>
-										<button className='btn btn-danger'>Delete</button>
+										<button
+											onClick={() => handleDelete(exams.id)}
+											className='btn btn-danger'>
+											Delete
+										</button>
 									</td>
 								</tr>
 							);
