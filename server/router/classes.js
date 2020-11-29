@@ -33,7 +33,7 @@ router.get('/v1/classes/:id', async (req, res) => {
 				classes: results.rows[0],
 			},
 		});
-		console.log(req.params.id);
+		// console.log(req.params.id);
 	} catch (err) {
 		console.log(err);
 	}

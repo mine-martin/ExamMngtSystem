@@ -1,6 +1,6 @@
 import React from 'react';
 import ExamsList from '../components/ExamsList';
-import AddExam from '../components/Updates/AddExam';
+import AddExam from '../components/Adds/AddExam';
 
 const ExamDetails = () => {
 	return (

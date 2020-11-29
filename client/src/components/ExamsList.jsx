@@ -2,9 +2,12 @@ import React, { useContext, useEffect } from 'react';
 import './style.css';
 import DataFinder from '../apis/DataFinder';
 import { ExamsContext } from '../context/ExamContext';
+import { useHistory } from 'react-router-dom';
 
 const ExamsList = (props) => {
 	const { exams, setExams } = useContext(ExamsContext);
+
+	let history = useHistory();
 	useEffect(() => {
 		const fetchExams = async () => {
 			try {
@@ -30,6 +33,10 @@ const ExamsList = (props) => {
 		} catch (err) {
 			console.log(err);
 		}
+	};
+
+	const handleUpdate = (id) => {
+		history.push(`/examsdetails/${id}/update`);
 	};
 
 	return (
@@ -74,11 +81,15 @@ const ExamsList = (props) => {
 									<td>{exam.exam_date}</td>
 									<td>{exam.exam_type}</td>
 									<td>
-										<button className='btn btn-warning'>Update</button>
+										<button
+											onClick={() => handleUpdate(exam.id)}
+											className='btn btn-warning'>
+											Update
+										</button>
 									</td>
 									<td>
 										<button
-											onClick={() => handleDelete(exams.id)}
+											onClick={() => handleDelete(exam.id)}
 											className='btn btn-danger'>
 											Delete
 										</button>

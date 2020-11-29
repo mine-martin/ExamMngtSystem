@@ -1,6 +1,6 @@
 import React from 'react';
 import ClassesList from '../components/ClassesList';
-import AddClass from '../components/Updates/AddClass';
+import AddClass from '../components/Adds/AddClass';
 
 const ClassesDetails = () => {
 	return (

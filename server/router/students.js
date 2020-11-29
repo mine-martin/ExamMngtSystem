@@ -23,7 +23,7 @@ router.get('/v1/students', async (req, res) => {
 //Get one Student from Database
 router.get('/v1/students/:id', async (req, res) => {
 	try {
-		const results = await db.query('SELECT * FROM students WHWRE id= $1', [
+		const results = await db.query('SELECT * FROM students WHERE id= $1', [
 			req.params.id,
 		]);
 

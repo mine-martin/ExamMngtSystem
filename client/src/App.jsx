@@ -7,7 +7,9 @@ import ClassesDetails from './routes/ClassesDetails';
 import ExamDetails from './routes/ExamDetails';
 import Home from './routes/Home';
 import StudentsDetails from './routes/StudentsDetails';
-
+import UpdateStudents from './routes/Updates/UpdateStudents';
+import UpdateClasses from './routes/Updates/UpdateClasses';
+import UpdateExams from './routes/Updates/UpdateExams';
 const App = () => {
 	return (
 		<StudentsContextProvider>
@@ -24,6 +26,21 @@ const App = () => {
 								/>
 								<Route exact path='/classdetails' component={ClassesDetails} />
 								<Route exact path='/examsdetails' component={ExamDetails} />
+								<Route
+									exact
+									path='/studentsdetails/:id/update'
+									component={UpdateStudents}
+								/>
+								<Route
+									exact
+									path='/classdetails/:id/update'
+									component={UpdateClasses}
+								/>
+								<Route
+									exact
+									path='/examsdetails/:id/update'
+									component={UpdateExams}
+								/>
 							</Switch>
 						</Router>
 					</div>
