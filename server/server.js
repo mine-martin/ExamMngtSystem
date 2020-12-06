@@ -3,12 +3,16 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(express.json()); //access req.body
+app.use(cors()); //run cors middleware
 
 //Routes
-app.use('/api', require('./router/students'));
-app.use('/api', require('./router/classes'));
-app.use('/api', require('./router/exams'));
+//login and register
+app.use('/home', require('./router/jwtAuth'));
+
+app.use('/home', require('./router/students'));
+app.use('/home', require('./router/classes'));
+app.use('/home', require('./router/exams'));
 
 const Port = process.env.PORT || 8080;
 

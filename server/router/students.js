@@ -1,11 +1,8 @@
-const express = require('express');
 const router = require('express').Router();
 const db = require('../db/index');
 
-router.use(express.json());
-
 //Get all Students from Database
-router.get('/v1/students', async (req, res) => {
+router.get('/api/v1/students', async (req, res) => {
 	try {
 		const results = await db.query('SELECT * FROM students');
 
@@ -21,7 +18,7 @@ router.get('/v1/students', async (req, res) => {
 });
 
 //Get one Student from Database
-router.get('/v1/students/:id', async (req, res) => {
+router.get('/api/v1/students/:id', async (req, res) => {
 	try {
 		const results = await db.query('SELECT * FROM students WHERE id= $1', [
 			req.params.id,
@@ -40,7 +37,7 @@ router.get('/v1/students/:id', async (req, res) => {
 });
 
 //Add Student to Database
-router.post('/v1/students', async (req, res) => {
+router.post('/api/v1/students', async (req, res) => {
 	try {
 		const results = await db.query(
 			'INSERT INTO students (student_name, surname,student_adm,student_dob,student_phone, class_name, exam_name) values($1,$2,$3,$4,$5,$6,$7)  returning *',
@@ -68,7 +65,7 @@ router.post('/v1/students', async (req, res) => {
 });
 
 //Update one Student in Database
-router.put('/v1/students/:id', async (req, res) => {
+router.put('/api/v1/students/:id', async (req, res) => {
 	try {
 		const results = await db.query(
 			'UPDATE students SET student_name = $1, surname = $2,student_adm = $3,student_dob = $4,student_phone = $5, class_name = $6, exam_name =$7 WHERE id = $8 returning *',
@@ -97,7 +94,7 @@ router.put('/v1/students/:id', async (req, res) => {
 });
 
 //Delete Student from Database
-router.delete('/v1/students/:id', async (req, res) => {
+router.delete('/api/v1/students/:id', async (req, res) => {
 	try {
 		const results = await db.query('DELETE FROM students WHERE id = $1', [
 			req.params.id,

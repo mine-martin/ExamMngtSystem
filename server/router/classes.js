@@ -1,11 +1,8 @@
-const express = require('express');
 const router = require('express').Router();
 const db = require('../db/index');
 
-router.use(express.json());
-
 //Get all classes from Database
-router.get('/v1/classes', async (req, res) => {
+router.get('/api/v1/classes', async (req, res) => {
 	try {
 		const results = await db.query('SELECT * FROM classes');
 
@@ -21,7 +18,7 @@ router.get('/v1/classes', async (req, res) => {
 });
 
 //Get one Class from Database
-router.get('/v1/classes/:id', async (req, res) => {
+router.get('/api/v1/classes/:id', async (req, res) => {
 	try {
 		const results = await db.query('SELECT * FROM classes WHERE id = $1', [
 			req.params.id,
@@ -40,7 +37,7 @@ router.get('/v1/classes/:id', async (req, res) => {
 });
 
 //Add one Class to Database
-router.post('/v1/classes', async (req, res) => {
+router.post('/api/v1/classes', async (req, res) => {
 	try {
 		const results = await db.query(
 			'INSERT INTO classes (class_name, class_teacher, exam_name) VALUES($1,$2,$3)  returning *',
@@ -59,7 +56,7 @@ router.post('/v1/classes', async (req, res) => {
 });
 
 //Update one Class in Database
-router.put('/v1/classes/:id', async (req, res) => {
+router.put('/api/v1/classes/:id', async (req, res) => {
 	try {
 		const results = await db.query(
 			'UPDATE classes SET class_name = $1, class_teacher =$2, exam_name =$3 WHERE id = $4 returning * ',
@@ -84,7 +81,7 @@ router.put('/v1/classes/:id', async (req, res) => {
 });
 
 //Delete Class from Database
-router.delete('/v1/classes/:id', async (req, res) => {
+router.delete('/api/v1/classes/:id', async (req, res) => {
 	try {
 		const result = await db.query('DELETE FROM classes WHERE id = $1', [
 			req.params.id,
