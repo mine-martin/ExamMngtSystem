@@ -2,9 +2,11 @@ const router = require('express').Router();
 const db = require('../db/index');
 const bcrypt = require('bcryptjs');
 const jwtGenerator = require('../utils/jwtGenerator');
+const validInfo = require('../middleware/validInfo');
+const authorization = require('../middleware/authorization');
 
 //register route
-router.post('/auth/register', async (req, res) => {
+router.post('/auth/register', validInfo, async (req, res) => {
 	try {
 		//1. destructure req.body
 		const { name, email, password } = req.body;
@@ -43,7 +45,7 @@ router.post('/auth/register', async (req, res) => {
 });
 
 //login route
-router.post('/auth/login', async (req, res) => {
+router.post('/auth/login', validInfo, async (req, res) => {
 	try {
 		//1. destructure req.body
 		const { email, password } = req.body;
@@ -69,6 +71,15 @@ router.post('/auth/login', async (req, res) => {
 		const token = jwtGenerator(user.rows[0].id);
 
 		res.json({ token });
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server Not Found');
+	}
+});
+
+router.get('/auth/isverify', authorization, async (req, res) => {
+	try {
+		res.json(true);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send('Server Not Found');
