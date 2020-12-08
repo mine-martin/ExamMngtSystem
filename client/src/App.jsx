@@ -51,7 +51,7 @@ const App = () => {
 										!isAuthenticated ? (
 											<Register {...props} setAuth={setAuth} />
 										) : (
-											<Redirect to='/login' />
+											<Redirect to='/' />
 										)
 									}
 								/>
