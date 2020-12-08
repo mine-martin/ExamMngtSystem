@@ -1,5 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import { ClassesContextProvider } from './context/ClassesContext';
 import { ExamsContextProvider } from './context/ExamContext';
 import { StudentsContextProvider } from './context/StudentsContext';
@@ -10,7 +15,17 @@ import StudentsDetails from './routes/StudentsDetails';
 import UpdateStudents from './routes/Updates/UpdateStudents';
 import UpdateClasses from './routes/Updates/UpdateClasses';
 import UpdateExams from './routes/Updates/UpdateExams';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+
 const App = () => {
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+	const setAuth = (boolean) => {
+		setIsAuthenticated(boolean);
+	};
+
 	return (
 		<StudentsContextProvider>
 			<ClassesContextProvider>
@@ -18,7 +33,41 @@ const App = () => {
 					<div className='container mt-5'>
 						<Router>
 							<Switch>
-								<Route exact path='/' component={Home} />
+								<Route
+									exact
+									path='/'
+									render={(props) =>
+										!isAuthenticated ? (
+											<Login {...props} setAuth={setAuth} />
+										) : (
+											<Redirect to='/dashboard' />
+										)
+									}
+								/>
+								<Route
+									exact
+									path='/register'
+									render={(props) =>
+										!isAuthenticated ? (
+											<Register {...props} setAuth={setAuth} />
+										) : (
+											<Redirect to='/login' />
+										)
+									}
+								/>
+								<Route
+									exact
+									path='/dashboard'
+									render={(props) =>
+										isAuthenticated ? (
+											<Dashboard {...props} setAuth={setAuth} />
+										) : (
+											<Redirect to='/' />
+										)
+									}
+								/>
+
+								<Route exact path='/dashboard' component={Home} />
 								<Route
 									exact
 									path='/studentsdetails'

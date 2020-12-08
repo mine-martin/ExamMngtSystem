@@ -47,7 +47,7 @@ const ClassesList = (props) => {
 			<div className='menu font-weight-bold'>
 				<ul type='none'>
 					<li>
-						<a href='/'>Dashboard</a>
+						<a href='/dashboard'>Dashboard</a>
 					</li>
 					<li>
 						<a href='/studentsdetails'>Students</a>
