@@ -2,7 +2,7 @@ const router = require('express').Router();
 const db = require('../db/index');
 const authorization = require('../middleware/authorization');
 
-router.get('/', authorization, async (req, res) => {
+router.get('/auth/dashboard', authorization, async (req, res) => {
 	try {
 		// res.json(req.user);
 

@@ -23,12 +23,13 @@ const Login = ({ setAuth }) => {
 			const results = response.data;
 			// console.log(results);
 			localStorage.setItem('token', results.token);
+			setAuth(true);
 		} catch (err) {
 			console.error(err.massage);
 		}
 	};
 	return (
-		<div>
+		<div className='container '>
 			<h3 className='text-center my-4'>Login</h3>
 			<form>
 				<input

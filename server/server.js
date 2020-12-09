@@ -11,7 +11,7 @@ app.use(cors()); //run cors middleware
 app.use('/home', require('./router/jwtAuth'));
 
 //dashboard router
-app.use('/dashboard', require('./router/dashboard'));
+app.use('/home', require('./router/dashboard'));
 
 app.use('/home', require('./router/students'));
 app.use('/home', require('./router/classes'));
