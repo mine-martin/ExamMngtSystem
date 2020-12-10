@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import UserFinder from '../apis/UserFinder';
 import Header from './Header';
@@ -29,6 +30,7 @@ const Dashboard = ({ setAuth }) => {
 		e.preventDefault();
 		localStorage.removeItem('token');
 		setAuth(false);
+		toast.success('Logout Successful');
 	};
 
 	return (

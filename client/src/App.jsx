@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -18,6 +18,11 @@ import UpdateExams from './routes/Updates/UpdateExams';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import UserFinder from './apis/UserFinder';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,6 +30,26 @@ const App = () => {
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
 	};
+
+	const isAuth = async () => {
+		try {
+			const response = await UserFinder.get('/isverify', {
+				method: 'GET',
+				headers: { token: localStorage.token },
+			});
+
+			const result = await response.data;
+			// console.log(result);
+
+			result === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+		} catch (err) {
+			console.error(err.message);
+		}
+	};
+
+	useEffect(() => {
+		isAuth();
+	});
 
 	return (
 		<StudentsContextProvider>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserFinder from '../apis/UserFinder';
+import { toast } from 'react-toastify';
 
 const Login = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -16,14 +16,24 @@ const Login = ({ setAuth }) => {
 	const handleClick = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await UserFinder.post('/login', {
-				email,
-				password,
+			const body = { email, password };
+			const response = await fetch('http://localhost:8000/home/auth/login', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body),
 			});
-			const results = response.data;
-			// console.log(results);
-			localStorage.setItem('token', results.token);
-			setAuth(true);
+
+			const results = await response.json();
+
+			if (results.token) {
+				localStorage.setItem('token', results.token);
+				setAuth(true);
+
+				toast.success('Login Successfully');
+			} else {
+				setAuth(false);
+				toast.error('Password incorrect');
+			}
 		} catch (err) {
 			console.error(err.massage);
 		}
