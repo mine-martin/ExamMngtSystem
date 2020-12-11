@@ -24,6 +24,9 @@ const AddExam = () => {
 
 	return (
 		<div className='ml-4'>
+		<div>
+				<h4 className='text-center font-weight-light mt-3'>Add a new Exam</h4>
+			</div>
 			<form action=''>
 				<div className='form-row'>
 					<div className='col'>

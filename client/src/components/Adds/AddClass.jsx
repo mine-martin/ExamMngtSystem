@@ -19,7 +19,7 @@ const AddClass = () => {
 	return (
 		<div>
 			<div>
-				<h4 className='text-center font-weight-light mt-5'>Add a new Class</h4>
+				<h4 className='text-center font-weight-light mt-3'>Add a new Class</h4>
 			</div>
 			<form action=''>
 				<div className='form-row ml-4'>

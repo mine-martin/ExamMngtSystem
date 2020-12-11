@@ -29,6 +29,9 @@ const AddStudent = () => {
 
 	return (
 		<div>
+		<div>
+				<h4 className='text-center font-weight-light mt-3'>Add a new Student</h4>
+			</div>
 			<form action=''>
 				<div className='form-row ml-4'>
 					<div className='col'>

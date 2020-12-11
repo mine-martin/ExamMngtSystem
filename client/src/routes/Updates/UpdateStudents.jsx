@@ -44,7 +44,7 @@ const UpdateStudents = (props) => {
 
 	return (
 		<div>
-			<h1 className='text-center font-weight-light'>Update students</h1>
+			<h1 className='text-center font-weight-light'>Update Student Details</h1>
 
 			<form>
 				<div className='form-group'>

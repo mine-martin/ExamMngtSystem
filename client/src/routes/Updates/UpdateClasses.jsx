@@ -35,7 +35,7 @@ const UpdateClasses = (props) => {
 
 	return (
 		<div>
-			<h1 className='text-center font-weight-light'>Update Classes</h1>
+			<h1 className='text-center font-weight-light'>Update Class Details</h1>
 
 			<form action=''>
 				<div className='form-group'>
