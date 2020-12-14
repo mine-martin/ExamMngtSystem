@@ -10,6 +10,7 @@ import { ExamsContextProvider } from './context/ExamContext';
 import { StudentsContextProvider } from './context/StudentsContext';
 import ClassesDetails from './routes/ClassesDetails';
 import ExamDetails from './routes/ExamDetails';
+
 import Home from './routes/Home';
 import StudentsDetails from './routes/StudentsDetails';
 import UpdateStudents from './routes/Updates/UpdateStudents';
@@ -21,6 +22,9 @@ import Dashboard from './components/Dashboard';
 import UserFinder from './apis/UserFinder';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import ListStudents from './routes/ListStudents';
+import MarksList from './routes/MarksList';
+import { MarksContextProvider } from './context/MarksContext';
 
 toast.configure();
 
@@ -55,69 +59,85 @@ const App = () => {
 		<StudentsContextProvider>
 			<ClassesContextProvider>
 				<ExamsContextProvider>
-					<div className='container mt-5'>
-						<Router>
-							<Switch>
-								<Route
-									exact
-									path='/'
-									render={(props) =>
-										!isAuthenticated ? (
-											<Login {...props} setAuth={setAuth} />
-										) : (
-											<Redirect to='/dashboard' />
-										)
-									}
-								/>
-								<Route
-									exact
-									path='/register'
-									render={(props) =>
-										!isAuthenticated ? (
-											<Register {...props} setAuth={setAuth} />
-										) : (
-											<Redirect to='/' />
-										)
-									}
-								/>
-								<Route
-									exact
-									path='/dashboard'
-									render={(props) =>
-										isAuthenticated ? (
-											<Dashboard {...props} setAuth={setAuth} />
-										) : (
-											<Redirect to='/' />
-										)
-									}
-								/>
+					<MarksContextProvider>
+						<div className='container mt-5'>
+							<Router>
+								<Switch>
+									<Route
+										exact
+										path='/'
+										render={(props) =>
+											!isAuthenticated ? (
+												<Login {...props} setAuth={setAuth} />
+											) : (
+												<Redirect to='/dashboard' />
+											)
+										}
+									/>
+									<Route
+										exact
+										path='/register'
+										render={(props) =>
+											!isAuthenticated ? (
+												<Register {...props} setAuth={setAuth} />
+											) : (
+												<Redirect to='/' />
+											)
+										}
+									/>
+									<Route
+										exact
+										path='/dashboard'
+										render={(props) =>
+											isAuthenticated ? (
+												<Dashboard {...props} setAuth={setAuth} />
+											) : (
+												<Redirect to='/' />
+											)
+										}
+									/>
 
-								<Route exact path='/dashboard' component={Home} />
-								<Route
+									<Route exact path='/dashboard' component={Home} />
+									<Route
+										exact
+										path='/studentsdetails'
+										component={StudentsDetails}
+									/>
+									<Route
+										exact
+										path='/classdetails'
+										component={ClassesDetails}
+									/>
+									<Route exact path='/examsdetails' component={ExamDetails} />
+									<Route
+										exact
+										path='/studentsdetails/:id/update'
+										component={UpdateStudents}
+									/>
+									<Route
+										exact
+										path='/classdetails/:id/update'
+										component={UpdateClasses}
+									/>
+									<Route
+										exact
+										path='/examsdetails/:id/update'
+										component={UpdateExams}
+									/>
+									{/* <Route
 									exact
-									path='/studentsdetails'
-									component={StudentsDetails}
-								/>
-								<Route exact path='/classdetails' component={ClassesDetails} />
-								<Route exact path='/examsdetails' component={ExamDetails} />
-								<Route
-									exact
-									path='/studentsdetails/:id/update'
-									component={UpdateStudents}
-								/>
-								<Route
-									exact
-									path='/classdetails/:id/update'
-									component={UpdateClasses}
-								/>
-								<Route
-									exact
-									path='/examsdetails/:id/update'
-									component={UpdateExams}
-								/>
-							</Switch>
-						</Router>
-					</div>
+									path='/examsdetails/:class_name'
+									component={ListClass}
+								/> */}
+									<Route
+										exact
+										path='/examsdetails/marks'
+										component={MarksList}
+									/>
+								</Switch>
+							</Router>
+						</div>
+					</MarksContextProvider>
 				</ExamsContextProvider>
 			</ClassesContextProvider>
 		</StudentsContextProvider>

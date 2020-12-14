@@ -12,7 +12,7 @@ const ExamsList = (props) => {
 		const fetchExams = async () => {
 			try {
 				const response = await DataFinder.get('/exams');
-				// console.log(response.data);
+				// console.log(response.data.data.exams);
 				setExams(response.data.data.exams);
 			} catch (error) {
 				console.log(error);
@@ -21,8 +21,8 @@ const ExamsList = (props) => {
 		fetchExams();
 	}, []);
 
-	const handleDelete = async (e,id) => {
-		e.stopPropagation()
+	const handleDelete = async (e, id) => {
+		e.stopPropagation();
 
 		try {
 			const response = await DataFinder.delete(`/exams/${id}`);
@@ -37,14 +37,14 @@ const ExamsList = (props) => {
 		}
 	};
 
-	const handleUpdate = (e,id) => {
+	const handleUpdate = (e, id) => {
 		e.stopPropagation();
 		history.push(`/examsdetails/${id}/update`);
 	};
 
-const handleExams = (id)=>{
-	history.push(`/examsdetails/${id}`)
-}
+	const handleExams = (exam_name) => {
+		history.push(`/examsdetails/marks`);
+	};
 	return (
 		<div className='list-group ml-4'>
 			<div className='text-center '>
@@ -82,20 +82,20 @@ const handleExams = (id)=>{
 					{exams &&
 						exams.map((exam) => {
 							return (
-								<tr onClick={()=> handleExams(exam.id)} key={exam.id}>
+								<tr onClick={() => handleExams(exam.exam_name)} key={exam.id}>
 									<td>{exam.exam_name}</td>
 									<td>{exam.exam_date}</td>
 									<td>{exam.exam_type}</td>
 									<td>
 										<button
-											onClick={(e) => handleUpdate(e,exam.id)}
+											onClick={(e) => handleUpdate(e, exam.id)}
 											className='btn btn-warning'>
 											Update
 										</button>
 									</td>
 									<td>
 										<button
-											onClick={(e) => handleDelete(e,exam.id)}
+											onClick={(e) => handleDelete(e, exam.id)}
 											className='btn btn-danger'>
 											Delete
 										</button>

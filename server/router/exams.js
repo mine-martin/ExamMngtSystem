@@ -96,4 +96,22 @@ router.delete('/api/v1/exams/:id', async (req, res) => {
 	}
 });
 
+router.get('/api/v1/exam', async (req, res) => {
+	try {
+		const result = await db.query(
+			'SELECT * FROM classes WHERE exam_name = $1 ',
+			[req.body.exam_name],
+		);
+
+		res.status(200).json({
+			status: 'success',
+			data: {
+				exams: result.rows,
+			},
+		});
+		// console.log(result.rows);
+	} catch (err) {
+		console.log(err.message);
+	}
+});
 module.exports = router;

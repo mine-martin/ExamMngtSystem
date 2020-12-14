@@ -11,7 +11,7 @@ const ClassesList = (props) => {
 		const fetchClasses = async () => {
 			try {
 				const response = await DataFinder.get('/classes');
-				// console.log(response.data);
+				// console.log(response.data.data.classes);
 				setClasses(response.data.data.classes);
 			} catch (error) {
 				console.log(error);
@@ -40,9 +40,9 @@ const ClassesList = (props) => {
 		history.push(`/classdetails/${id}/update`);
 	};
 
-const handleClasses=(id)=>{
-	history.push(`/classes/${id}`)
-}
+	const handleClasses = (class_name) => {
+		history.push(`/classdetails`);
+	};
 
 	return (
 		<div className='list-group ml-4'>
@@ -80,13 +80,15 @@ const handleClasses=(id)=>{
 				<tbody>
 					{classes.map((classes) => {
 						return (
-							<tr onClick={()=>handleClasses(classes.id)} key={classes.id}>
+							<tr
+								onClick={() => handleClasses(classes.class_name)}
+								key={classes.id}>
 								<td>{classes.class_name}</td>
 								<td>{classes.class_teacher}</td>
 								<td>{classes.exam_name}</td>
 								<td>
 									<button
-										onClick={(e) => handleUpdate(e,classes.id)}
+										onClick={(e) => handleUpdate(e, classes.id)}
 										className='btn btn-warning'>
 										Update
 									</button>

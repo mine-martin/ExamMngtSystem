@@ -16,6 +16,7 @@ app.use('/home', require('./router/dashboard'));
 app.use('/home', require('./router/students'));
 app.use('/home', require('./router/classes'));
 app.use('/home', require('./router/exams'));
+// app.use('/home', require('./router/marks'));
 
 const Port = process.env.PORT || 8080;
 
