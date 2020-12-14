@@ -22,9 +22,10 @@ import Dashboard from './components/Dashboard';
 import UserFinder from './apis/UserFinder';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import ListStudents from './routes/ListStudents';
+
 import MarksList from './routes/MarksList';
 import { MarksContextProvider } from './context/MarksContext';
+import UpdateMarks from './routes/Updates/UpdateMarks';
 
 toast.configure();
 
@@ -133,6 +134,11 @@ const App = () => {
 										exact
 										path='/examsdetails/marks'
 										component={MarksList}
+									/>
+									<Route
+										exact
+										path='/examsdetails/marks/:id/update'
+										component={UpdateMarks}
 									/>
 								</Switch>
 							</Router>

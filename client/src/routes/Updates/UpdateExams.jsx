@@ -13,7 +13,7 @@ const UpdateExam = (props) => {
 	useEffect(() => {
 		const fetchExam = async () => {
 			const response = await DataFinder.get(`/exams/${id}`);
-			// console.log(response.data.data);
+			console.log(response.data.data.exams);
 			setExam_name(response.data.data.exams.exam_name);
 			setExam_date(response.data.data.exams.exam_date);
 			setExam_type(response.data.data.exams.exam_type);

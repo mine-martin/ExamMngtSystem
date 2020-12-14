@@ -9,7 +9,48 @@ const AddMarks = () => {
 	const [science, setScience] = useState('');
 	const [cre, setCre] = useState('');
 	const [total, setTotal] = useState('');
+	const [average, setAverage] = useState('');
 	const [grade, setGrade] = useState('');
+
+	const handleCompute = (e) => {
+		e.preventDefault();
+		const result =
+			parseInt(english) +
+			parseInt(kiswahili) +
+			parseInt(mathematics) +
+			parseInt(science) +
+			parseInt(cre);
+		setTotal(result);
+
+		const res = total / 5;
+		setAverage(res);
+
+		if (res >= 80) {
+			setGrade('A');
+		} else if (res >= 75) {
+			setGrade('A-');
+		} else if (res >= 70) {
+			setGrade('B+');
+		} else if (res >= 65) {
+			setGrade('B');
+		} else if (res >= 60) {
+			setGrade('B-');
+		} else if (res >= 55) {
+			setGrade('C+');
+		} else if (res >= 50) {
+			setGrade('C');
+		} else if (res >= 45) {
+			setGrade('C-');
+		} else if (res >= 40) {
+			setGrade('D+');
+		} else if (res >= 35) {
+			setGrade('D');
+		} else if (res >= 30) {
+			setGrade('D-');
+		} else {
+			setGrade('E');
+		}
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -23,8 +64,10 @@ const AddMarks = () => {
 				science,
 				cre,
 				total,
+				average,
 				grade,
 			});
+			console.log(response);
 		} catch (err) {
 			console.error(err);
 		}
@@ -119,6 +162,17 @@ const AddMarks = () => {
 					</div>
 					<div className='col'>
 						<input
+							value={average}
+							onChange={(e) => {
+								setTotal(e.target.value);
+							}}
+							type='text'
+							className='form-control'
+							placeholder='average'
+						/>
+					</div>
+					<div className='col'>
+						<input
 							value={grade}
 							onChange={(e) => {
 								setGrade(e.target.value);
@@ -129,6 +183,11 @@ const AddMarks = () => {
 						/>
 					</div>
 
+					<div className='col'>
+						<button onClick={handleCompute} className='btn btn-primary'>
+							Compute
+						</button>
+					</div>
 					<div className='col'>
 						<button onClick={handleSubmit} className='btn btn-primary'>
 							Add

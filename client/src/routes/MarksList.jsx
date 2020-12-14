@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import UserFinder from '../apis/UserFinder';
 import AddMarks from '../components/Adds/AddMarks';
 
@@ -6,6 +7,8 @@ import { MarksContext } from '../context/MarksContext';
 
 const MarksList = (props) => {
 	const { marks, setMarks } = useContext(MarksContext);
+
+	let history = useHistory();
 
 	useEffect(() => {
 		const fetchMarks = async () => {
@@ -32,6 +35,10 @@ const MarksList = (props) => {
 		} catch (err) {
 			console.error(err.message);
 		}
+	};
+
+	const handleUpdate = (id) => {
+		history.push(`/examsdetails/marks/${id}/update`);
 	};
 
 	return (
@@ -67,6 +74,7 @@ const MarksList = (props) => {
 						<th scope='col'>SCIENCE</th>
 						<th scope='col'>CRE</th>
 						<th scope='col'>TOTAL</th>
+						<th scope='col'>AVERAGE</th>
 						<th scope='col'>GRADE</th>
 						<th scope='col'>UPDATE</th>
 						<th scope='col'>DELETE</th>
@@ -84,9 +92,14 @@ const MarksList = (props) => {
 									<td>{mark.science}</td>
 									<td>{mark.cre}</td>
 									<td>{mark.total}</td>
+									<td>{mark.average}</td>
 									<td>{mark.grade}</td>
 									<td>
-										<button className='btn btn-warning'>Update</button>
+										<button
+											onClick={() => handleUpdate(mark.id)}
+											className='btn btn-warning'>
+											Update
+										</button>
 									</td>
 									<td>
 										<button
