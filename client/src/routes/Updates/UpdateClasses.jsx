@@ -29,7 +29,7 @@ const UpdateClasses = (props) => {
 			class_teacher,
 			exam_name,
 		});
-		// console.log(newClass)
+		
 		history.push('/classdetails');
 	};
 
