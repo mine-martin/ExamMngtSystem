@@ -13,7 +13,7 @@ const UpdateClasses = (props) => {
 	useEffect(() => {
 		const fetchClass = async () => {
 			const response = await DataFinder.get(`/classes/${id}`);
-			// console.log(response.data.data);
+			
 			setClass_name(response.data.data.classes.class_name);
 			setClass_teacher(response.data.data.classes.class_teacher);
 			setExam_name(response.data.data.classes.exam_name);
